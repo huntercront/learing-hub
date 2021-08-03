@@ -1,0 +1,220 @@
+.course-card {
+    display: flex;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.course-text {
+    flex: 0 0 60%;
+    width: 100%;
+    max-width: 60%;
+    padding: 1rem 1rem 2.5rem 2rem;
+}
+
+.course-img {
+    flex: 0 0 auto;
+}
+
+.course-card {
+    background: #FFE6CB;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.course-time {
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: absolute;
+    left: 2rem;
+    bottom: 1rem;
+}
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    border-radius: 1rem;
+}
+
+.video-prew {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    transform: scale(1.2);
+    width: 100%;
+    transition: 200ms ease-in;
+    transition-property: transform;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.play-video {
+    background: transparent;
+    outline: none;
+    border: none;
+    transition: 200ms ease-in;
+    transition-property: transform;
+}
+
+.play-video:hover {
+    transform: scale(1.2);
+}
+
+.video-container:hover .video-prew {
+    transform: scale(1);
+}
+
+.col-pc-33 {
+    flex: 0 0 33.33%;
+    width: 100%;
+    max-width: 33.33%;
+    padding: 0 8px;
+}
+
+.feature-img {
+    flex: 0 0 1.5rem;
+    max-width: 1.5rem;
+    margin-right: 0.75rem;
+}
+
+.feature-text {
+    font-weight: 600;
+    line-height: 1.3;
+    max-width: 220px;
+}
+
+.features {
+    margin-top: 2rem;
+}
+
+.leaning-button {
+    font-size: 1.25rem;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    font-weight: 600;
+    border: none;
+    transition: 200ms ease-in;
+    transition-property: color;
+}
+
+.icon {
+    position: relative;
+}
+
+.icon svg {
+    stroke: var(--black);
+    transition: 200ms ease-in;
+    transition-property: stroke, transform;
+}
+
+.icon-s {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.25rem;
+}
+
+.icon-sm {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-left: 0.25rem;
+}
+
+ul.books-list li {
+    position: relative;
+}
+
+ul.books-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 1.65rem;
+}
+
+ul.books-list li::before {
+    content: "—";
+    position: absolute;
+    left: -25px;
+    top: 0px;
+}
+
+.author {
+    font-weight: 600;
+}
+
+.hidden-list {
+    display: none;
+}
+
+.leaning-el {
+    margin-bottom: 0.5rem;
+}
+
+.leaning-el.active-el .leaning-button {
+    color: var(--main);
+}
+
+.leaning-el.active-el .leaning-button .icon svg {
+    transform: rotate(90deg);
+    stroke: var(--main);
+}
+
+.books-img img {
+    width: 80%;
+    transform: rotate(8deg);
+}
+
+.leaning-panel {
+    margin-top: 1.5rem;
+}
+
+.persone-name {
+    margin-bottom: 0rem;
+    font-weight: 700;
+}
+
+.persone-role {
+    color: (--gray);
+    font-size: 0.8rem;
+}
+
+.persone-img {
+    margin-right: 1.5rem;
+    position: relative;
+    flex: 0 0 4rem;
+}
+
+.persone-photo,
+.persone-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.persone-photo {
+    overflow: hidden;
+    border-radius: 3rem;
+}
+
+.persone-icon {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+}
+
+.read-full {
+    font-weight: 600;
+    color: var(--main)
+}
+
+.slide-head {
+    margin-bottom: 1rem;
+}
