@@ -840,7 +840,7 @@ html.wf-active body {
 .video-modal .modal-dialog {
     margin: 1.75rem auto;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .video-modal .modal-body {
@@ -855,7 +855,7 @@ html.wf-active body {
 }
 
 .m-video {
-    padding-top: 56.25%;
+    padding-top: 46.25%;
     position: relative;
 }
 
