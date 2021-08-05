@@ -43,8 +43,8 @@ Loader.prototype = {
 
 var l = new Loader();
 l.require([
-        "./slider.js",
-        "./lazy-load.js"
+        "./js/slider.js",
+        "./js/lazy-load.js"
     ],
     function() {
 
