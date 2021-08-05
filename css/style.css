@@ -7,8 +7,8 @@
 .course-text {
     flex: 0 0 60%;
     width: 100%;
-    max-width: 60%;
-    padding: 1rem 1rem 2.5rem 2rem;
+    max-width: 55%;
+    padding: 1rem 1rem 2.5rem 1.5rem;
 }
 
 .course-img {
@@ -16,9 +16,25 @@
 }
 
 .course-card {
-    background: #FFE6CB;
     overflow: hidden;
     border-radius: 0.5rem;
+    position: relative;
+}
+
+.courses .col:nth-child(1) .course-card {
+    background: #FFE6CB;
+}
+
+.courses .col:nth-child(2) .course-card {
+    background: #DFF8FF;
+}
+
+.courses .col:nth-child(3) .course-card {
+    background: #FECECF;
+}
+
+.courses .col:nth-child(4) .course-card {
+    background: #DFEBFF;
 }
 
 .course-time {
@@ -26,8 +42,48 @@
     font-size: 0.8rem;
     letter-spacing: 0.5px;
     position: absolute;
-    left: 2rem;
+    left: 1.5rem;
     bottom: 1rem;
+}
+
+.course-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.read-more-icon {
+    position: absolute;
+    bottom: 0rem;
+    right: 0rem;
+    width: 6rem;
+    height: 6rem;
+    background: var(--main);
+    border-top-left-radius: 2.5rem;
+    opacity: 0;
+    transition: 250ms ease-in;
+    transform: translate(6rem, 6rem);
+    transition-property: opacity, transform;
+    user-select: none;
+    flex-direction: column;
+}
+
+.read-more-icon span {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.course-card:hover .read-more-icon {
+    opacity: 1;
+    transform: translate(0rem, 0rem);
+}
+
+.read-more-icon img {
+    max-width: 3rem;
 }
 
 .video-container {
@@ -104,7 +160,11 @@
     font-weight: 600;
     border: none;
     transition: 200ms ease-in;
-    transition-property: color;
+    transition-property: color, opacity;
+}
+
+.leaning-button:hover {
+    opacity: 0.5;
 }
 
 .icon {
@@ -121,6 +181,10 @@
     width: 1.5rem;
     height: 1.5rem;
     margin-left: 0.25rem;
+}
+
+.icon.single {
+    margin: 0;
 }
 
 .icon-sm {
@@ -182,7 +246,8 @@ ul.books-list li::before {
     font-weight: 700;
 }
 
-.persone-role {
+.persone-role,
+.storu-descr {
     color: (--gray);
     font-size: 0.8rem;
 }
@@ -212,9 +277,165 @@ ul.books-list li::before {
 
 .read-full {
     font-weight: 600;
-    color: var(--main)
+    color: var(--main);
+    transition: 200ms ease-in;
+    transition-property: color;
+}
+
+.read-full:hover {
+    color: #460173;
+}
+
+.read-full:hover .icon svg path {
+    stroke: #460173;
 }
 
 .slide-head {
     margin-bottom: 1rem;
+}
+
+.slider-slide {
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #ececec;
+    margin: 0 0.5rem;
+}
+
+.has-gradient {
+    position: relative;
+}
+
+.has-gradient::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #FFFFFF 2.07%, rgba(255, 255, 255, 0) 87.08%);
+}
+
+.slider-content {
+    margin: 0 -0.5rem;
+    position: relative;
+}
+
+.slider-button {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background: #F5F6FA;
+    transition: 200ms ease-in;
+    transition-property: background;
+}
+
+.slider-button:hover {
+    background: var(--main);
+}
+
+.slider-button svg {
+    stroke: var(--main);
+}
+
+.slider-button:hover svg {
+    stroke: #fff;
+}
+
+.slider-buttons {
+    margin-top: 1rem;
+}
+
+.slider-button+.slider-button {
+    margin-left: 0.25rem;
+}
+
+.cta-content .text {
+    margin-top: 4rem;
+}
+
+.color-block {
+    background: #F7EAFF;
+    border-radius: 0.75rem;
+    position: relative;
+}
+
+.outline-logo {
+    position: absolute;
+    height: 100%;
+    right: 5%;
+    top: 0;
+    width: 50%;
+    overflow: hidden;
+}
+
+.outline-logo svg {
+    width: 100%;
+    height: auto;
+    transform: translate(0, -15%);
+    stroke: #E2B1FF;
+}
+
+.cta-content {
+    padding: 2rem 0rem 1.5rem 3rem;
+}
+
+.cta-img {
+    transform: translate(0, -12.5%);
+}
+
+.cta-img img {
+    max-width: 340px;
+}
+
+.pre-head h3 {
+    max-width: 340px;
+}
+
+.vk-link-icon {
+    background: var(--main);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+}
+
+.vk-link-icon img {
+    max-width: 1.5rem;
+}
+
+.link-name {
+    font-weight: 700;
+    margin-bottom: 0.124rem;
+    line-height: 1;
+}
+
+.vk-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: 200ms ease-in;
+    background: #fff;
+    transition-property: background;
+}
+
+.vk-link:hover {
+    background: #F7EAFF;
+}
+
+.vk-link-text {
+    margin-left: 0.5rem;
+}
+
+.link-descr {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.vk-links {
+    margin-top: 1rem;
+}
+
+.pre-footer-img {
+    margin-top: 3rem;
+}
+
+.pre-footer-img img {
+    max-width: 712px;
 }

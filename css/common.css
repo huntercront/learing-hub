@@ -433,20 +433,10 @@ html {
     justify-content: space-between;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 500;
-    background: rgba(0, 0, 0, 0.26);
-    overflow-x: hidden;
-    overflow-y: auto;
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.9);
-    display: none;
+.s-sb {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 html.wf-active body {
@@ -502,6 +492,12 @@ html.wf-active body {
     font-weight: 700;
     line-height: 1.15;
     margin-bottom: 1rem;
+}
+
+.h3 {
+    font-size: 1.5rem;
+    line-height: 1.05;
+    font-weight: 700;
 }
 
 .h2.double-space {
@@ -709,4 +705,265 @@ html.wf-active body {
     border: none;
     background: transparent;
     padding: 0;
+}
+
+.btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.centured {
+    text-align: center;
+}
+
+.f-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer {
+    background: #000;
+    padding-top: 3.5rem;
+}
+
+.info-col {
+    flex: 0 0 60%;
+}
+
+.site-logo {
+    max-width: 120px;
+}
+
+.f-link,
+.f-links-descr {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.f-links-descr {
+    font-weight: 600;
+}
+
+.f-link {
+    padding: 0.25rem 0;
+    transition: 150ms ease-in;
+    transition-property: color;
+}
+
+.f-link:hover {
+    color: #B2B2B2;
+}
+
+.social-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+    transition: 150ms ease-in;
+    transition-property: opacity;
+}
+
+.social-link:hover {
+    opacity: 0.5;
+}
+
+.copy-line {
+    margin-top: 3rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid #515151;
+}
+
+.copy-info {
+    font-size: 0.8rem;
+    color: #B2B2B2;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    opacity: 0;
+}
+
+.modal-open.modal {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    animation: lideIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+    opacity: 1;
+}
+
+@keyframes lideIn {
+    from {
+        transform: translateY(15%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-will-close.modal {
+    animation: lideOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+    opacity: 0;
+}
+
+@keyframes lideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-15%);
+        opacity: 0;
+    }
+}
+
+.modal-dialog {
+    max-width: 640px;
+    margin: 1.75rem auto;
+    margin-bottom: 0;
+    min-height: calc(100% - 3.5rem);
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.video-modal .modal-dialog {
+    margin: 1.75rem auto;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.video-modal .modal-body {
+    padding: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.video-modal .modal-content {
+    background: transparent;
+    height: 100%;
+}
+
+.m-video {
+    padding-top: 56.25%;
+    position: relative;
+}
+
+.m-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.video-modal .close-modal {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    outline: 0;
+}
+
+.modal-overley {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .1);
+    opacity: 0;
+    z-index: 50;
+    visibility: hidden;
+    transition: 150ms ease-in;
+    transition-property: opacity, visibility;
+    background: rgba(0, 0, 0, .25);
+    z-index: 400;
+}
+
+.overley-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bodylock {
+    overflow-y: hidden;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.storu-descr {
+    position: relative;
+}
+
+.name {
+    padding-right: 1rem;
+    margin-left: 0.25rem;
+}
+
+.story-pre {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.storu-descr::after {
+    content: '';
+    width: auto;
+    height: 1px;
+    background: #E9E9E9;
+    flex: 1 0 auto;
+}
+
+.full-testimonial p {
+    font-size: 1.125rem;
+}
+
+.close-modal {
+    background: #F5F6FA;
+    z-index: 600;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: 200ms ease-in;
+    transition-property: background;
+}
+
+.close-modal:hover {
+    background: #FE6963;
+}
+
+.close-modal:hover svg {
+    stroke: #fff;
+}
+
+.modal-body .slide-head {
+    position: sticky;
+    top: 0;
+    margin: -1rem;
+    padding: 1rem;
+    background: #fff;
+    z-index: 10;
 }

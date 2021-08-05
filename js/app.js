@@ -1,5 +1,5 @@
 WebFontConfig = {
-    google: { families: ['Inter:400,600,700,900'] }
+    google: { families: ['Inter:400,600,700,900&display=swap'] }
 };
 
 (function(d) {
@@ -43,13 +43,25 @@ Loader.prototype = {
 
 var l = new Loader();
 l.require([
-        "../js/slider.js",
+        "/js/slider.js",
+        "/js/lazy-load.js"
     ],
     function() {
 
         let mySiema = new Siema({
             selector: '.slider-content',
-            perPage: 2
+            duration: 400,
+            easing: 'ease-out',
+            startIndex: 0,
+            draggable: true,
+            multipleDrag: true,
+            threshold: 90,
+            loop: false,
+            rtl: false,
+            perPage: {
+                480: 1,
+                764: 2,
+            },
         });
         let prev = document.querySelector('.prev');
         let next = document.querySelector('.next');
@@ -130,15 +142,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     books.forEach(function(book) {
         book.addEventListener('click', function(event) {
             if (event.target.closest('.leaning-el').classList.contains('active-el')) {
-                slideUp(event.target.closest('.leaning-el').querySelector('.hidden-list'), 300)
-                event.target.closest('.leaning-el').classList.remove('active-el')
+                slideUp(event.target.closest('.leaning-el').querySelector('.hidden-list'), 300);
+                event.target.closest('.leaning-el').classList.remove('active-el');
             } else {
                 if (document.querySelector('.active-el')) {
-                    slideToggle(document.querySelector('.active-el .hidden-list'), 300)
-                    document.querySelector('.active-el').classList.toggle('active-el')
+                    slideToggle(document.querySelector('.active-el .hidden-list'), 300);
+                    document.querySelector('.active-el').classList.toggle('active-el');
                 }
-                slideDown(event.target.closest('.leaning-el').querySelector('.hidden-list'), 300)
-                event.target.closest('.leaning-el').classList.add('active-el')
+                slideDown(event.target.closest('.leaning-el').querySelector('.hidden-list'), 300);
+                event.target.closest('.leaning-el').classList.add('active-el');
 
             }
 
@@ -146,4 +158,110 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
 
 
-})
+    function getScrollbarWidth() {
+        const outer = document.createElement('div');
+        outer.style.visibility = 'hidden';
+        outer.style.overflow = 'scroll';
+        outer.style.msOverflowStyle = 'scrollbar';
+        document.body.appendChild(outer);
+        const inner = document.createElement('div');
+        outer.appendChild(inner);
+        const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth);
+        outer.parentNode.removeChild(outer);
+        return scrollbarWidth;
+    }
+
+
+    var modals = document.querySelectorAll('[data-modal-open]');
+    var modalOverlay = document.querySelector('.modal-overley');
+
+    function openModal(modal) {
+        modalOverlay.classList.add('overley-active')
+        let modalWindow = document.querySelector('[data-modal=' + modal.getAttribute('data-modal-open') + ']')
+        modalWindow.classList.add('modal-open');
+        if (document.body.offsetHeight > window.innerHeight) {
+            document.body.classList.add('bodylock');
+            document.body.style.paddingRight = getScrollbarWidth() + 'px';
+            document.querySelector('.header').style.paddingRight = getScrollbarWidth() + 'px';
+        }
+        if (modal.getAttribute('data-modal-open') == 'testimonial') {
+            let text = modal.getAttribute('data-descr')
+            let photo = modal.closest('.slider-slide').querySelector('.persone-photo img')
+            let name = modal.closest('.slider-slide').querySelector('.persone-name')
+            let role = modal.closest('.slider-slide').querySelector('.persone-role')
+            document.querySelector('.full-testimonial').innerHTML = text;
+            modalWindow.querySelector('.persone-photo img').setAttribute('src', photo.getAttribute('src'));
+            modalWindow.querySelector('.persone-name').textContent = name.textContent;
+            modalWindow.querySelector('.persone-role').textContent = role.textContent;
+
+        }
+        if (modal.getAttribute('data-modal-open') == 'video') {
+            let videoSrc = modalWindow.querySelector('.m-video').getAttribute('data-video');
+            modalWindow.querySelector('.m-video').innerHTML = '<iframe src="' + videoSrc + '?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+
+        }
+
+    }
+
+
+    var stopVideo = function(element) {
+        var iframe = element.querySelector('iframe');
+        iframe.remove()
+    };
+
+
+    function closeModal(modal) {
+        modal.classList.add('modal-will-close');
+        if (modal.getAttribute('data-modal') == 'video') {
+            stopVideo(document.querySelector('.m-video'))
+        }
+
+        modal.addEventListener("animationend", function() {
+            if (modal.classList.contains('modal-will-close')) {
+                modalOverlay.classList.remove('overley-active')
+                this.classList.remove('modal-open');
+                this.classList.remove('modal-will-close');
+                if (document.body.offsetHeight > window.innerHeight) {
+                    document.body.classList.remove('bodylock');
+                    document.body.style.paddingRight = '0px';
+                    document.querySelector('.header').style.paddingRight = '0px'
+                }
+            }
+        });
+
+
+    }
+
+
+    modals.forEach(function(modal) {
+        modal.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            openModal(modal);
+
+
+        });
+    });
+
+
+
+
+
+    var modalCloseButtons = document.querySelectorAll('.close-modal')
+    if (modalCloseButtons) {
+        modalCloseButtons.forEach(function(modalCloseButton) {
+            modalCloseButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                closeModal(modalCloseButton.closest('.modal'))
+            });
+        });
+    }
+
+    document.querySelector('.modal').addEventListener('click', function(event) {
+        if (!event.target.matches('.modal-open')) return
+        closeModal(this);
+    });
+
+
+
+});
