@@ -193,7 +193,8 @@ figure {
     margin: 0 0 1rem
 }
 
-img {
+img,
+picture {
     vertical-align: middle;
     border-style: none;
     width: 100%;
@@ -381,10 +382,6 @@ html {
     margin-left: -8px;
 }
 
-.col {
-    padding: 0 8px;
-}
-
 .container {
     padding-left: 16px;
     padding-right: 16px;
@@ -471,6 +468,13 @@ html.wf-active body {
 .col-pc-50 {
     flex: 0 0 50%;
     max-width: 50%;
+}
+
+.col-pc-33 {
+    flex: 0 0 33.33%;
+    width: 100%;
+    max-width: 33.33%;
+    padding: 0 8px;
 }
 
 .main-color {
@@ -695,6 +699,7 @@ html.wf-active body {
 
 .hero {
     padding: 4rem 0 5rem;
+    overflow: hidden;
 }
 
 .section-m {
@@ -966,4 +971,229 @@ html.wf-active body {
     padding: 1rem;
     background: #fff;
     z-index: 10;
+}
+
+.cta-content {
+    padding: 2rem 0rem 1.5rem 3rem;
+}
+
+.cta-img {
+    transform: translate(0, -12.5%);
+}
+
+.cta-img img {
+    max-width: 340px;
+}
+
+.pre-head h3 {
+    max-width: 340px;
+}
+
+.vk-link-icon {
+    background: var(--main);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+}
+
+.vk-link-icon img {
+    max-width: 1.5rem;
+}
+
+.link-name {
+    font-weight: 700;
+    margin-bottom: 0.124rem;
+    line-height: 1;
+}
+
+.vk-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: 200ms ease-in;
+    background: #fff;
+    transition-property: background;
+}
+
+.vk-link:hover {
+    background: #F7EAFF;
+}
+
+.vk-link-text {
+    margin-left: 0.5rem;
+}
+
+.link-descr {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.vk-links {
+    margin-top: 1rem;
+}
+
+.pre-footer-img {
+    margin-top: 3rem;
+}
+
+.pre-footer-img img {
+    max-width: 712px;
+}
+
+.icon {
+    position: relative;
+}
+
+.icon svg {
+    stroke: var(--black);
+    transition: 200ms ease-in;
+    transition-property: stroke, transform;
+}
+
+.icon-s {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.25rem;
+}
+
+.icon.single {
+    margin: 0;
+}
+
+.icon-sm {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-left: 0.25rem;
+}
+
+@media screen and (max-width:768px) {
+    .hero .acn-outline {
+        transform: translate(-50%, -50%);
+    }
+    .hero .col-pc-50:nth-child(2) {
+        margin-top: 2rem;
+    }
+    .section-m {
+        margin-top: 4rem;
+    }
+    .col-t-50 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-t-100 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .h2 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    .h2.double-space {
+        margin-bottom: 1.5rem;
+    }
+    .h3 {
+        font-size: 1.25rem;
+    }
+    .text-lg {
+        font-size: 1.25rem;
+    }
+    .h1 {
+        font-size: 3rem;
+    }
+    .hero-content h1 {
+        margin-bottom: 1.25rem;
+    }
+    .links {
+        margin-bottom: 1rem;
+    }
+    .leaning {
+        position: relative;
+    }
+    .col.book-learning {
+        position: absolute;
+        max-width: 40vw;
+        right: 0;
+        bottom: -1rem;
+    }
+    .leaning-el {
+        max-width: 58vw;
+    }
+    .footer-content {
+        flex-wrap: wrap;
+    }
+    .info-col {
+        flex: 0 0 100%;
+    }
+    .social-col {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width:640px) {
+    .leaning-el {
+        max-width: none;
+    }
+    .col.book-learning {
+        position: relative;
+        max-width: none;
+    }
+    .book-learning .books-img img {
+        transform: rotate(0deg);
+        width: 100%;
+    }
+    .stories {
+        margin-top: 5rem;
+    }
+    .leaning {
+        background: #F5F5F5;
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .col-m-100 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .section-m {
+        margin-top: 3rem;
+    }
+    .stories {
+        margin-top: 5rem;
+    }
+    .vk-link {
+        padding: 0.5rem;
+    }
+    .vk-link {
+        padding-left: 0rem;
+    }
+    .f-col:nth-child(1) {
+        flex: 0 0 100%;
+        margin-bottom: 2rem;
+    }
+    .footer {
+        padding-top: 1.5rem;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .vk-links {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-top: 0.25rem;
+    }
+    .pre-head {
+        justify-content: flex-start;
+    }
+    .pre-head h3 {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .f-col:nth-child(2) {
+        flex: 0 0 100%;
+        margin-bottom: 1.5rem;
+    }
 }

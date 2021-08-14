@@ -41,36 +41,39 @@ Loader.prototype = {
 }
 
 
-var l = new Loader();
-l.require([
-        "./js/slider.js",
-        "./js/lazy-load.js"
-    ],
-    function() {
+if (document.querySelector('.slider-content')) {
+    var l = new Loader();
+    l.require([
+            "./js/slider.js",
+            "./js/lazy-load.js"
+        ],
+        function() {
 
-        let mySiema = new Siema({
-            selector: '.slider-content',
-            duration: 400,
-            easing: 'ease-out',
-            startIndex: 0,
-            draggable: true,
-            multipleDrag: true,
-            threshold: 90,
-            loop: false,
-            rtl: false,
-            perPage: {
-                480: 1,
-                764: 2,
-            },
+            let mySiema = new Siema({
+                selector: '.slider-content',
+                duration: 400,
+                easing: 'ease-out',
+                startIndex: 0,
+                draggable: true,
+                multipleDrag: true,
+                threshold: 90,
+                loop: false,
+                rtl: false,
+                perPage: {
+                    480: 1,
+                    764: 2,
+                },
+            });
+            let prev = document.querySelector('.prev');
+            let next = document.querySelector('.next');
+
+            prev.addEventListener('click', () => mySiema.prev());
+            next.addEventListener('click', () => mySiema.next());
+
+
         });
-        let prev = document.querySelector('.prev');
-        let next = document.querySelector('.next');
+}
 
-        prev.addEventListener('click', () => mySiema.prev());
-        next.addEventListener('click', () => mySiema.next());
-
-
-    });
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -136,6 +139,80 @@ document.addEventListener("DOMContentLoaded", function(event) {
             return slideUp(target, duration);
         }
     }
+
+
+
+
+    // setInterval(() => {
+    //     slideToggle(document.querySelector('.page-form'), 200)
+    //     slideToggle(document.querySelector('.form-submit'), 200)
+    //     setTimeout(() => {
+    //         document.querySelector('.form-submit-inner').classList.add('form-submited')
+    //     }, 200)
+    // }, 1500)
+
+
+    function cleanForm(form) {
+
+    }
+
+    function startTimer(elem) {
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                total: t,
+                days: days,
+                hours: hours,
+                minutes: minutes,
+                seconds: seconds
+            };
+        }
+        var timer = elem.closest('.form-timer').getAttribute('timer-counter')
+        var minutes = elem.querySelector(".mins");
+        var seconds = elem.querySelector(".seconds");
+
+        function initializeClock(id, endtime) {
+
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                if (t.total <= 0) {
+                    slideToggle(elem.querySelector('.page-form-inner'), 200)
+                    slideToggle(formTimer.querySelector('.test-start').closest('.timer-inner'), 200)
+                    elem.classList.remove('timer-started')
+                    cleanForm()
+                    clearInterval(timeinterval);
+                    return true;
+                }
+
+                minutes.innerHTML = ("0" + t.minutes).slice(-2);
+                seconds.innerHTML = ("0" + t.seconds).slice(-2);
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date(Date.parse(new Date()) + timer * 60 * 1000);
+        initializeClock("countdown", deadline);
+    }
+
+    let formTimer = document.querySelector('.form-timer')
+    if (formTimer) {
+        formTimer.querySelector('.test-start').addEventListener('click', function(e) {
+            slideToggle(formTimer.querySelector('.page-form-inner'), 200)
+            slideToggle(this.closest('.timer-inner'), 200)
+            formTimer.classList.add('timer-started')
+            startTimer(formTimer)
+        })
+    }
+
+
 
 
     let books = document.querySelectorAll('.leaning-button')
@@ -257,11 +334,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
-    document.querySelector('.modal').addEventListener('click', function(event) {
-        if (!event.target.matches('.modal-open')) return
-        closeModal(this);
-    });
-
+    if (document.querySelector('.modal')) {
+        document.querySelector('.modal').addEventListener('click', function(event) {
+            if (!event.target.matches('.modal-open')) return
+            closeModal(this);
+        });
+    }
 
 
 });

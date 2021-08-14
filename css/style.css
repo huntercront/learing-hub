@@ -129,13 +129,6 @@
     transform: scale(1);
 }
 
-.col-pc-33 {
-    flex: 0 0 33.33%;
-    width: 100%;
-    max-width: 33.33%;
-    padding: 0 8px;
-}
-
 .feature-img {
     flex: 0 0 1.5rem;
     max-width: 1.5rem;
@@ -165,32 +158,6 @@
 
 .leaning-button:hover {
     opacity: 0.5;
-}
-
-.icon {
-    position: relative;
-}
-
-.icon svg {
-    stroke: var(--black);
-    transition: 200ms ease-in;
-    transition-property: stroke, transform;
-}
-
-.icon-s {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 0.25rem;
-}
-
-.icon.single {
-    margin: 0;
-}
-
-.icon-sm {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin-left: 0.25rem;
 }
 
 ul.books-list li {
@@ -374,68 +341,60 @@ ul.books-list li::before {
     stroke: #E2B1FF;
 }
 
-.cta-content {
-    padding: 2rem 0rem 1.5rem 3rem;
+@media screen and (max-width:768px) {
+    .cta-content {
+        padding: 2rem 0rem 3rem 2rem;
+    }
+    .cta-content .text {
+        margin-top: 1rem;
+    }
+    .outline-logo {
+        width: 100%;
+        right: 0;
+        opacity: 0.3;
+        bottom: 0;
+        top: auto;
+    }
+    .outline-logo svg {
+        transform: translate(0, -7.5%);
+    }
 }
 
-.cta-img {
-    transform: translate(0, -12.5%);
+@media screen and (max-width:714px) {
+    .video-container {
+        height: 200px;
+    }
 }
 
-.cta-img img {
-    max-width: 340px;
-}
-
-.pre-head h3 {
-    max-width: 340px;
-}
-
-.vk-link-icon {
-    background: var(--main);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 0.25rem;
-}
-
-.vk-link-icon img {
-    max-width: 1.5rem;
-}
-
-.link-name {
-    font-weight: 700;
-    margin-bottom: 0.124rem;
-    line-height: 1;
-}
-
-.vk-link {
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    transition: 200ms ease-in;
-    background: #fff;
-    transition-property: background;
-}
-
-.vk-link:hover {
-    background: #F7EAFF;
-}
-
-.vk-link-text {
-    margin-left: 0.5rem;
-}
-
-.link-descr {
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.vk-links {
-    margin-top: 1rem;
-}
-
-.pre-footer-img {
-    margin-top: 3rem;
-}
-
-.pre-footer-img img {
-    max-width: 712px;
+@media screen and (max-width:480px) {
+    .video-container {
+        height: 180px;
+    }
+    .course-text {
+        padding: 1rem 0.75rem 1rem 1rem;
+        position: relative;
+        z-index: 10;
+    }
+    .course-time {
+        left: 1rem;
+    }
+    .course-text .text {
+        margin-bottom: 0;
+    }
+    .course-img {
+        transform: translate(-30px, 20px) scale(0.95);
+    }
+    .outline-logo {
+        opacity: 0.5;
+    }
+    .cta-content {
+        padding: 1rem 0rem 2rem 0rem;
+    }
+    .cta {
+        background: #F7EAFF;
+    }
+    .outline-logo {
+        overflow: unset;
+        height: auto;
+    }
 }
