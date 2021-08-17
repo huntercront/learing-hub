@@ -41,42 +41,67 @@ Loader.prototype = {
 }
 
 
-if (document.querySelector('.slider-content')) {
-    var l = new Loader();
-    l.require([
-            "./js/slider.js",
-            "./js/lazy-load.js"
-        ],
-        function() {
+let mMenu = document.querySelector('.mobile-icon')
+let menu = document.querySelector('.header-info')
+let overlay = document.querySelector('.header-overley')
 
-            let mySiema = new Siema({
-                selector: '.slider-content',
-                duration: 400,
-                easing: 'ease-out',
-                startIndex: 0,
-                draggable: true,
-                multipleDrag: true,
-                threshold: 90,
-                loop: false,
-                rtl: false,
-                perPage: {
-                    480: 1,
-                    764: 2,
-                },
-            });
-            let prev = document.querySelector('.prev');
-            let next = document.querySelector('.next');
+mMenu.addEventListener('click', function(e) {
 
-            prev.addEventListener('click', () => mySiema.prev());
-            next.addEventListener('click', () => mySiema.next());
+    this.querySelector('.ham').classList.toggle('active')
+    menu.classList.toggle('visible')
+    overlay.classList.toggle('overley-active')
 
 
-        });
-}
-
-
+})
+overlay.addEventListener('click', function(e) {
+    if (this.classList.contains('overley-active') && (mMenu.querySelector('.ham').classList.contains('active'))) {
+        menu.classList.toggle('visible')
+        this.classList.toggle('overley-active')
+        mMenu.querySelector('.ham').classList.toggle('active')
+    }
+})
 
 document.addEventListener("DOMContentLoaded", function(event) {
+
+    if (document.querySelector('.slider-content')) {
+        setTimeout(function() {
+            var l = new Loader();
+            l.require([
+                    "./js/slider.js",
+                    "./js/lazy-load.js"
+                ],
+                function() {
+
+                    let mySiema = new Siema({
+                        selector: '.slider-content',
+                        duration: 400,
+                        easing: 'ease-out',
+                        startIndex: 0,
+                        draggable: true,
+                        multipleDrag: true,
+                        threshold: 90,
+                        loop: false,
+                        rtl: false,
+                        perPage: {
+                            480: 1,
+                            764: 2,
+                        },
+                    });
+                    let prev = document.querySelector('.prev');
+                    let next = document.querySelector('.next');
+
+                    prev.addEventListener('click', () => mySiema.prev());
+                    next.addEventListener('click', () => mySiema.next());
+
+
+                });
+
+        }, 2000)
+
+    }
+
+
+
     let slideUp = (target, duration = 500) => {
         target.style.transitionProperty = 'height, margin, padding';
         target.style.transitionDuration = duration + 'ms';
